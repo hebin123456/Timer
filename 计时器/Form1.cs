@@ -64,19 +64,49 @@ namespace 计时器
         {
             if (!hide)
             {
-                this.Size = new Size(this.Size.Width, this.Size.Height - 55);
+                this.Size = new Size(this.Size.Width, this.Size.Height - 60);
                 this.FormBorderStyle = FormBorderStyle.None;
                 Rectangle rec = Screen.GetWorkingArea(this);
                 this.Location = new Point((rec.Width - this.Size.Width) / 2, 0);
+
+                // 绑定拖动事件
+                this.MouseDown += Drag_MouseDown;
+                this.MouseMove += Drag_MouseMove;
+                this.MouseUp += Drag_MouseUp;
+
+                // 绑定标签拖动事件
+                this.label1.MouseDown += Drag_MouseDown;
+                this.label1.MouseMove += Drag_MouseMove;
+                this.label1.MouseUp += Drag_MouseUp;
+                //this.label2.MouseDown += Drag_MouseDown;
+                //this.label2.MouseMove += Drag_MouseMove;
+                //this.label2.MouseUp += Drag_MouseUp;
+
+                // 绑定点击事件
                 this.label2.MouseClick += label_Start_Pause;
                 this.label2.MouseDoubleClick += label_Stop;
             }
             else
             {
-                this.Size = new Size(this.Size.Width, this.Size.Height + 55);
+                this.Size = new Size(this.Size.Width, this.Size.Height + 60);
                 this.FormBorderStyle = FormBorderStyle.FixedSingle;
                 Rectangle rec = Screen.GetWorkingArea(this);
                 this.Location = new Point((rec.Width - this.Size.Width) / 2, (rec.Height - this.Size.Height) / 2);
+
+                // 解绑拖动事件
+                this.MouseDown -= Drag_MouseDown;
+                this.MouseMove -= Drag_MouseMove;
+                this.MouseUp -= Drag_MouseUp;
+
+                // 解绑标签拖动事件
+                this.label1.MouseDown -= Drag_MouseDown;
+                this.label1.MouseMove -= Drag_MouseMove;
+                this.label1.MouseUp -= Drag_MouseUp;
+                //this.label2.MouseDown -= Drag_MouseDown;
+                //this.label2.MouseMove -= Drag_MouseMove;
+                //this.label2.MouseUp -= Drag_MouseUp;
+
+                // 解绑点击事件
                 this.label2.MouseClick -= label_Start_Pause;
                 this.label2.MouseDoubleClick -= label_Stop;
             }
@@ -104,6 +134,48 @@ namespace 计时器
             label2.Text = "00:00:00";
             time = 0;
             isplayed = false;
+        }
+
+        private Point mouseOff;//鼠标移动位置变量
+        private bool leftFlag;//标签是否为左键
+
+        private void Drag_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (sender.GetType().ToString().IndexOf("Label") >= 0)
+                {
+                    Label label = (Label)sender;
+                    mouseOff = new Point(-label.Location.X - e.X, -label.Location.Y - e.Y); //得到变量的值
+                }
+                else
+                {
+                    mouseOff = new Point(-e.X, -e.Y); //得到变量的值
+                }
+                leftFlag = true;                  //点击左键按下时标注为true;
+            }
+        }
+
+        private void Drag_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mouseSet = Control.MousePosition;
+                mouseSet.Offset(mouseOff.X, mouseOff.Y);  //设置移动后的位置
+                Location = mouseSet;
+            }
+        }
+
+        private void Drag_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false;//释放鼠标后标注为false;
+            }
+            if(this.Location.Y < 0)
+            {
+                this.Location = new Point(this.Location.X, 0);
+            }
         }
     }
 }

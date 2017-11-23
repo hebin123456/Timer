@@ -8,3 +8,13 @@ C:\Users\以夕阳落款\Desktop\计时器\计时器\obj\Debug\计时器.csproj.
 C:\Users\以夕阳落款\Desktop\计时器\计时器\obj\Debug\计时器.csproj.CoreCompileInputs.cache
 C:\Users\以夕阳落款\Desktop\计时器\计时器\obj\Debug\计时器.exe
 C:\Users\以夕阳落款\Desktop\计时器\计时器\obj\Debug\计时器.pdb
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\bin\Debug\计时器.exe.config
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\bin\Debug\计时器.exe
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\bin\Debug\计时器.pdb
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\obj\Debug\计时器.csprojResolveAssemblyReference.cache
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\obj\Debug\计时器.Form1.resources
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\obj\Debug\计时器.Properties.Resources.resources
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\obj\Debug\计时器.csproj.GenerateResource.Cache
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\obj\Debug\计时器.csproj.CoreCompileInputs.cache
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\obj\Debug\计时器.exe
+C:\Users\以夕阳落款\Documents\GitHub\Timer\计时器\obj\Debug\计时器.pdb
